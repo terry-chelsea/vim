@@ -1,0 +1,226 @@
+" Chinese 
+language messages zh_CN.utf-8
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=ucs-bom,utf-8,chinese
+
+" Vundle Need
+filetype off
+" linux:
+" set rtp+=~/.vim/bundle/vundle/
+" windows: 
+set rtp+=$VIM/vimfiles/bundle/vundle/
+call vundle#rc('$VIM/vimfiles/bundle/')
+
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'  
+filetype plugin indent on
+
+" Color
+Bundle 'freya'
+" bracket
+Bundle 'delimitMate.vim'
+" python
+Bundle 'kevinw/pyflakes-vim'
+Bundle 'python.vim'
+
+" comment use `x else `c
+Bundle 'EnhCommentify.vim'
+
+" NerdTree use <C-F1>
+Bundle 'scrooloose/nerdtree'
+let NERDTreeWinPos='right'
+let NERDTreeWinSize=31
+let NERDTreeChDirMode=1
+map <C-F1> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" Taglist  use <C-F2>
+Bundle 'taglist.vim'
+let Tlist_Auto_Update=1
+let Tlist_Auto_Open = 0
+let Tlist_Use_Right_Window=1  
+let Tlist_Show_One_File=0  
+let Tlist_File_Fold_Auto_Close=0  
+let Tlist_Exit_OnlyWindow=1
+map <C-F2> :TlistToggle<CR>
+
+filetype plugin on
+"HTML  use <c-e> <c-n> <c-p>
+Bundle 'mattn/emmet-vim'
+let g:user_emmet_expandabbr_key='<c-e>'
+let g:user_emmet_complete_tag=1
+let g:user_emmet_next_key='<c-n>'
+let g:user_emmet_prev_key='<c-p>'
+let g:user_emmet_settings = {
+\  'html' : {
+\    'filters' : 'html',
+\    'snippets' : {
+\      'bt' : "<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset=\"UTF-8\">\n    <title></title>\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <link href=\"css/bootstrap.min.css\" rel=\"stylesheet\" media=\"screen\">\n    <!--[if lt IE 9]>\n      <script src=\"/assets/js/html5shiv.js\"></script>\n      <script src=\"/assets/js/respond.min.js\"></script>\n    <![endif]-->\n  </head>\n  <body>\n    ${cursor}${child}\n    <script src=\"js/jquery.min.js\"></script>\n    <script src=\"js/bootstrap.min.js\"></script>\n  </body>\n</html>",
+\      'mn'      : "#include <functional>\n#include <algorithm>\n#include <iostream>\n#include <fstream>\n#include <sstream>\n#include <iomanip>\n#include <numeric>\n#include <cstring>\n#include <climits>\n#include <cassert>\n#include <cstdio>\n#include <string>\n#include <vector>\n#include <bitset>\n#include <queue>\n#include <stack>\n#include <cmath>\n#include <ctime>\n#include <list>\n#include <set>\n#include <map>\nusing namespace std;\ntypedef long long LL;\nconst int MOD =1e9 + 7;\nconst int INF = 0x3f3f3f3f;\n\nconst int MXN=1e6;\nint N,M;\n\nvoid Rush()\n{\n\tint T;\n\tscanf(\"%d\",&T);\n\tfor(int kas=1;kas<=T;++kas)\n\t{\n\t\tprintf(\"Case %d: \",kas);\n\t}\n}\nint main() \n{\n\t${cursor}\n\treturn 0;\n}\n",
+\    },
+\  },
+\}
+
+"Doxygen use <F1-u> <F1-n> <F1-k> <F1-o>
+Bundle 'DoxygenToolkit.vim'
+let g:DoxygenToolkit_authorName="\twengcc@ihep.ac.cn"
+let g:DoxygenToolkit_briefTag_pre = "@brief\t"
+let g:DoxygenToolkit_dateTag = "@date\t"
+let g:DoxygenToolkit_briefTag_post= "\n/// @complexity\t"
+let g:DoxygenToolkit_versionTag= "@example\t"
+let g:DoxygenToolkit_paramTag_pre = "@param\t"
+let g:DoxygenToolkit_returnTag = "@return\t"
+let g:DoxygenToolkit_maxFunctionProtoLines = 30
+let g:DoxygenToolkit_briefTag_funcName="yes"
+let g:DoxygenToolkit_commentType="C++"
+let g:doxygen_enhanced_color=1
+map <F1>u :DoxAuthor<cr>
+map <F1>n :Dox<cr>
+map <F1>k :DoxBlock<cr>
+map <F1>o O/** */<Left><Left>
+
+colorscheme freya
+:set guioptions-=m
+:set guioptions-=T
+set hlsearch 
+set showmatch
+highlight StatusLine guifg=SlateBlue guibg=Yellow
+highlight StatusLineNC guifg=Gray guibg=White
+:set laststatus=2
+:set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+set number
+set autoread
+set completeopt=preview,menu
+set cursorline
+set showcmd
+syntax enable
+syntax on
+set wildmenu
+let mapleader = "`"
+let g:mapleader = "`"
+let g:C_MapLeader  = '`'
+nmap he <ESC>:%!xxd<cr>
+nmap hx <ESC>:%!xxd -r <cr>
+
+" tab use <C-i>
+:nn <M-1> 1gt
+:nn <M-2> 2gt
+:nn <M-3> 3gt
+:nn <M-4> 4gt
+:nn <M-5> 5gt
+:nn <M-6> 6gt
+:nn <M-7> 7gt
+:nn <M-8> 8gt
+:nn <M-9> 9gt
+:nn <M-0> :tablast<CR>
+nnoremap <C-i> :tabc<CR>
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set softtabstop=4
+set smarttab
+
+"Only on windows make windows transparent 
+au GUIEnter * simalt ~x
+:let g:m_tweak_SetAlpha = 1
+func! Tweak_SetAlpha()
+:if g:m_tweak_SetAlpha == 1
+let g:m_tweak_SetAlpha=0
+:else 
+let g:m_tweak_SetAlpha=1
+:endif
+endfunc 
+map aw :call Tweak_SetAlpha()<cr>
+map mw :call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<cr>
+func! SaveInputData()
+let g:m_tweak_SetAlpha=0
+endfunc
+:autocmd BufReadPost * call SaveInputData()
+
+"code fold
+set foldmethod=manual
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc':'zo')<CR>
+
+"move code whole line
+nnoremap <C-k>  mz:m-2<cr>`z==
+nnoremap <C-j>  mz:m+<cr>`z==
+xnoremap <C-k>  :m'<-2<cr>gv=gv
+xnoremap <C-j>  :m'>+<cr>gv=gv
+
+"Save Input to file
+"map <silent> <C-F3> :call SaveInput() <cr>
+func! SaveInput()
+exec "tabnew"
+exec 'normal "+gP'
+exec "w! in.txt"
+exec "q"
+endfunc
+
+" Compile use <F7>
+map <silent> <F7> :call Compile()<cr>
+func Compile()
+exec "w"
+if &filetype == 'c'
+exec "!gcc % -g -o test.exe"
+elseif &filetype == 'cpp'
+exec "!g++ -Wall -Wfloat-equal -Wshadow -Wconversion -Winline % -g -o test.exe"
+elseif &filetype == 'java'
+exec "!javac %"
+endif
+endfunc
+
+
+" Run use <C-F5>
+map <silent> <C-F5> :call Run()<cr>
+func Run()
+if &filetype == 'python'
+exec "w"
+exec "!python %"
+elseif &filetype =='java'
+exec "w"
+exec "!java %<"
+elseif &filetype =='html'
+exec "w"
+exec "!chrome.exe %:p"
+elseif &filetype == 'cpp'
+exec "w"
+exec "!test.exe"
+endif
+endfunc
+
+
+" There is windows system default
+set nocompatible
+source $VIMRUNTIME/vimrc_example.vim
+source $VIMRUNTIME/mswin.vim
+behave mswin
+set nobackup
+
+set diffexpr=MyDiff()
+function MyDiff()
+  let opt = '-a --binary '
+  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+  let arg1 = v:fname_in
+  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+  let arg2 = v:fname_new
+  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+  let arg3 = v:fname_out
+  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+  let eq = ''
+  if $VIMRUNTIME =~ ' '
+    if &sh =~ '\<cmd'
+      let cmd = '""' . $VIMRUNTIME . '\diff"'
+      let eq = '"'
+    else
+      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+    endif
+  else
+    let cmd = $VIMRUNTIME . '\diff'
+  endif
+  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+endfunction
+
